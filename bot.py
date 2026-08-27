@@ -73,7 +73,7 @@ def is_admin(update):
 
     return (
         update.effective_user
-        and update.effective_user.id == ADMIN_IDS
+        and update.effective_user.id in ADMIN_IDS
     )
 
 
