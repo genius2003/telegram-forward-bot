@@ -13,7 +13,11 @@ from telegram.ext import (
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHANNEL_ID = os.environ["CHANNEL_ID"]
-ADMIN_ID = int(os.environ["ADMIN_ID"])
+ADMIN_IDS = [
+    int(x.strip())
+    for x in os.environ["ADMIN_IDS"].split(",")
+    if x.strip()
+]
 
 BUTTON_FILE = "button.json"
 
@@ -69,7 +73,7 @@ def is_admin(update):
 
     return (
         update.effective_user
-        and update.effective_user.id == ADMIN_ID
+        and update.effective_user.id == ADMIN_IDS
     )
 
 
